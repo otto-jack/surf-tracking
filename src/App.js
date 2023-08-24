@@ -1,6 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 
+
+import WillyCall from './components/WillyCall';
+
 function App() {
   return (
     <div className="App">
@@ -9,6 +12,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <WillyCall exampleProp={"CUNT"}></WillyCall>
         <a
           className="App-link"
           href="https://reactjs.org"
