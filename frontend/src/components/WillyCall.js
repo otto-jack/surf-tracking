@@ -1,58 +1,44 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+
 export default class WillyCall extends Component {
 
-    state = {
+    /*state = {
         tamaramaData:{}
-    };
+    };*/
 
     constructor(props) {
         super(props);
-        this.state = { };
+        this.state = { data:null};
     }
 
     
 
-    async componentDidMount() {
-        const tamarama =  19161;
-        const tamaramaURL = 'https://api.willyweather.com.au/v2/' + process.env.REACT_APP_WILLYWEATHER_KEY + '/locations/' + tamarama + '.json';
-
-        fetch(tamaramaURL)
+    componentDidMount() {
+        fetch('http://localhost:5000/get_data',)
             .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.error(error));
-        /*axios.get(tamaramaURL,withCredentials=false)
-            .then(response  => this.setState({tamaramaData: response.data})) 
-            .catch(function (error) {
-                console.log(error.toJSON());
-        });*/
-
-        /*const response = await axios({
-            method: 'get',
-            url: tamaramaURL,
-            withCredentials: false
-        });
-        this.setState({tamaramaData: response.data.total});
-        */
-        /*.then(function (response) {
-            console.log(response.data);
-            console.log(response.status);
-            console.log(response.statusText);
-            console.log(response.headers);
-            console.log(response.config);
-        })
-        //.then(response  => this.setState({tamaramaData: response.data})) 
-        .catch(function (error) {
-            console.log(error.toJSON());
-        });*/
-        // send HTTP request
-        // save it to the state
+            .then(data => {
+                this.setState({ data });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+            
+        
     }
 
     render() {
+        const { data } = this.state;
+
+
         return(
-           
-             <p>{this.tamaramaData} {this.props.exampleProp} </p>
+            <div className="WillyCall">
+                
+                {data ? (
+                    <pre>{JSON.stringify(data, null, 2)}</pre>
+                ) : (
+                    <p>Loading data...</p>
+                )}
+                <p> {this.props.exampleProp} </p>
+            </div>
+
         )
     }
 }
