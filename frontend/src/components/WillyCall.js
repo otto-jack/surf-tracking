@@ -14,18 +14,13 @@ export default class WillyCall extends Component {
     
 
     async componentDidMount() {
-        /*const tamarama =  19161;
+        const tamarama =  19161;
         const tamaramaURL = 'https://api.willyweather.com.au/v2/' + process.env.REACT_APP_WILLYWEATHER_KEY + '/locations/' + tamarama + '.json';
 
-        fetch(tamaramaURL,{
-            method: "GET",
-            headers:{}
-        })
+        fetch(tamaramaURL)
             .then(response => response.json())
             .then(data => console.log(data))
             .catch(error => console.error(error));
-            */
-        
         /*axios.get(tamaramaURL,withCredentials=false)
             .then(response  => this.setState({tamaramaData: response.data})) 
             .catch(function (error) {
